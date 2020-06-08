@@ -1,4 +1,4 @@
-package com.nakano.forecastmvvm.data.response
+package com.nakano.forecastmvvm.data.db.entity
 
 
 import com.google.gson.annotations.SerializedName
