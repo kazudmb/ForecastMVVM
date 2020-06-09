@@ -1,4 +1,4 @@
-package com.nakano.forecastmvvm.data
+package com.nakano.forecastmvvm.data.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.nakano.forecastmvvm.data.network.response.CurrentWeatherResponse
@@ -23,13 +23,17 @@ interface ApixuWeatherApiService {
     ): Deferred<CurrentWeatherResponse>
 
     companion object {
-        operator fun invoke(): ApixuWeatherApiService {
+        operator fun invoke(
+            connectivityInterceptor: ConnectivityInterceptor
+        ): ApixuWeatherApiService {
             val requestInterceptor = Interceptor { chain ->
 
                 val url = chain.request()
                     .url()
                     .newBuilder()
-                    .addQueryParameter("access_key", API_KEY)
+                    .addQueryParameter("access_key",
+                        API_KEY
+                    )
                     .build()
                 val request = chain.request()
                     .newBuilder()
@@ -41,6 +45,7 @@ interface ApixuWeatherApiService {
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
+                .addInterceptor(connectivityInterceptor)
                 .build()
 
             return Retrofit.Builder()
