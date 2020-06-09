@@ -12,12 +12,8 @@ data class CurrentWeatherEntry(
     val feelslike: Int,
     @SerializedName("is_day")
     val isDay: String,
-//    @SerializedName("observation_time")
-//    val observationTime: String,
     val precip: Int,
     val temperature: Int,
-//    @SerializedName("uv_index")
-//    val uvIndex: Int,
     val visibility: Int,
     @SerializedName("weather_code")
     val weatherCode: Int,
