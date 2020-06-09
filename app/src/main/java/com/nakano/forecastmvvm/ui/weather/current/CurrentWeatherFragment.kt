@@ -35,10 +35,10 @@ class CurrentWeatherFragment : Fragment() {
         // TODO: Use the ViewModel
         val apiService = ApixuWeatherApiService()
 
-        GlobalScope.launch(Dispatchers.Main) {
-            val currentWeatherResponse = apiService.getCurrentWeather("London").await()
-            textView.text = currentWeatherResponse.toString()
-        }
+//        GlobalScope.launch(Dispatchers.Main) {
+//            val currentWeatherResponse = apiService.getCurrentWeather("London").await()
+//            textView.text = currentWeatherResponse.toString()
+//        }
     }
 
 }
