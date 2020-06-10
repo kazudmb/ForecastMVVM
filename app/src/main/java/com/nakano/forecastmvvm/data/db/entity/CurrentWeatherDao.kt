@@ -13,8 +13,8 @@ interface CurrentWeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun upsert(weatherEntry: CurrentWeatherEntry)
 
-//    @Query("select * from current_weather where id = $CURRENT_WEATHER_ID")
-//    fun getWeatherMetric(): LiveData<MetricCurrentWeatherEntry>
+    @Query("select * from current_weather where id = $CURRENT_WEATHER_ID")
+    fun getWeatherMetric(): LiveData<MetricCurrentWeatherEntry>
 
     @Query("select * from current_weather where id = $CURRENT_WEATHER_ID")
     fun getWeatherImperial(): LiveData<ImperialCurrentWeatherEntry>
