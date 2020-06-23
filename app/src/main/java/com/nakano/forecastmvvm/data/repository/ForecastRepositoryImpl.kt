@@ -1,5 +1,7 @@
 package com.nakano.forecastmvvm.data.repository
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import com.nakano.forecastmvvm.data.db.entity.CurrentWeatherDao
 import com.nakano.forecastmvvm.data.db.unitlocalized.UnitSpecificCurrentWeatherEntry
