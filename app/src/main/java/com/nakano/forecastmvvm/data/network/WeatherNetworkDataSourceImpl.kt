@@ -3,7 +3,7 @@ package com.nakano.forecastmvvm.data.network
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.nakano.forecastmvvm.data.internal.NoConnectivityException
+import com.nakano.forecastmvvm.internal.NoConnectivityException
 import com.nakano.forecastmvvm.data.network.response.CurrentWeatherResponse
 
 class WeatherNetworkDataSourceImpl(

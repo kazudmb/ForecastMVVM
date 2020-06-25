@@ -1,4 +1,4 @@
-package com.nakano.forecastmvvm.data.internal
+package com.nakano.forecastmvvm.internal
 
 import java.io.IOException
 

@@ -2,10 +2,9 @@ package com.nakano.forecastmvvm.data.network
 
 import android.content.Context
 import android.net.ConnectivityManager
-import com.nakano.forecastmvvm.data.internal.NoConnectivityException
+import com.nakano.forecastmvvm.internal.NoConnectivityException
 import okhttp3.Interceptor
 import okhttp3.Response
-import java.io.IOException
 
 class ConnectivityInterceptorImpl(
     context: Context

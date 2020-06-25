@@ -1,8 +1,8 @@
 package com.nakano.forecastmvvm.ui.weather.current
 
 import androidx.lifecycle.ViewModel
-import com.nakano.forecastmvvm.data.internal.UnitSystem
-import com.nakano.forecastmvvm.data.internal.lazyDeferred
+import com.nakano.forecastmvvm.internal.UnitSystem
+import com.nakano.forecastmvvm.internal.lazyDeferred
 import com.nakano.forecastmvvm.data.repository.ForecastRepository
 
 class CurrentWeatherViewModel(
