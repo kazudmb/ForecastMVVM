@@ -1,9 +1,12 @@
 package com.nakano.forecastmvvm
 
 import android.app.Application
+import androidx.preference.PreferenceManager
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.nakano.forecastmvvm.data.db.ForecastDatabase
 import com.nakano.forecastmvvm.data.network.*
+import com.nakano.forecastmvvm.data.provider.UnitProvider
+import com.nakano.forecastmvvm.data.provider.UnitProviderImpl
 import com.nakano.forecastmvvm.data.repository.ForecastRepository
 import com.nakano.forecastmvvm.data.repository.ForecastRepositoryImpl
 import com.nakano.forecastmvvm.ui.weather.current.CurrentWeatherViewModelFactory
@@ -15,7 +18,7 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
-class ForecastApplication: Application(), KodeinAware {
+class ForecastApplication : Application(), KodeinAware {
     override val kodein = Kodein.lazy {
         import(androidXModule(this@ForecastApplication))
 
@@ -25,11 +28,13 @@ class ForecastApplication: Application(), KodeinAware {
         bind() from singleton { ApixuWeatherApiService(instance()) }
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
         bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance()) }
-        bind() from provider { CurrentWeatherViewModelFactory(instance()) }
+        bind<UnitProvider>() with singleton { UnitProviderImpl(instance()) }
+        bind() from provider { CurrentWeatherViewModelFactory(instance(), instance()) }
     }
 
     override fun onCreate() {
         super.onCreate()
         AndroidThreeTen.init(this)
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
     }
 }
