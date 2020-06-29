@@ -10,16 +10,16 @@ class WeatherNetworkDataSourceImpl(
     private val apixuWeatherApiService: ApixuWeatherApiService
 ) : WeatherNetworkDataSource {
 
-    private val _downloadCurrentWeather = MutableLiveData<CurrentWeatherResponse>()
-    override val downloadCurrentWeather: LiveData<CurrentWeatherResponse>
-        get() = _downloadCurrentWeather
+    private val _downloadedCurrentWeather = MutableLiveData<CurrentWeatherResponse>()
+    override val downloadedCurrentWeather: LiveData<CurrentWeatherResponse>
+        get() = _downloadedCurrentWeather
 
     override suspend fun fetchCurrentWeather(location: String, language: String) {
         try {
             val fetchedCurrentWeather = apixuWeatherApiService
                 .getCurrentWeather(location, language)
                 .await()
-            _downloadCurrentWeather.postValue(fetchedCurrentWeather)
+            _downloadedCurrentWeather.postValue(fetchedCurrentWeather)
         }
         catch (e: NoConnectivityException) {
             Log.e("Connectivity", "No internet connection.", e)

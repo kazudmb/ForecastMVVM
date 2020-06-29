@@ -1,10 +1,12 @@
-package com.nakano.forecastmvvm.data.db.entity
+package com.nakano.forecastmvvm.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.nakano.forecastmvvm.data.db.entity.CURRENT_WEATHER_ID
+import com.nakano.forecastmvvm.data.db.entity.CurrentWeatherEntry
 import com.nakano.forecastmvvm.data.db.unitlocalized.ImperialCurrentWeatherEntry
 import com.nakano.forecastmvvm.data.db.unitlocalized.MetricCurrentWeatherEntry
 
